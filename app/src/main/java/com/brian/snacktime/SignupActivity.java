@@ -103,7 +103,6 @@ public class SignupActivity extends AppCompatActivity {
                     // User is signed in
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                     onSignupSuccess();
-                    progressDialog.dismiss();
                 } else {
                     // User is signed out
                     Log.d(TAG, "onAuthStateChanged:signed_out");
@@ -130,6 +129,7 @@ public class SignupActivity extends AppCompatActivity {
     }
 
     public void onSignupSuccess() {
+        progressDialog.dismiss();
         mSignupButton.setEnabled(true);
         setResult(RESULT_OK, null);
         finish();

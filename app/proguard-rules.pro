@@ -15,3 +15,8 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+
+
+#Firebase proguard settings
+-keepattributes Signature
+-keepattributes *Annotation*

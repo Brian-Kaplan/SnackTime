@@ -60,6 +60,38 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        mAuth.addAuthStateListener(mAuthListener);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        checkForCrashes();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        unregisterManagers();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (mAuthListener != null) {
+            mAuth.removeAuthStateListener(mAuthListener);
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        unregisterManagers();
+    }
+
+    @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
@@ -103,8 +135,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         } else if (id == R.id.nav_slideshow) {
 
-        } else if (id == R.id.nav_manage) {
-
+        } else if (id == R.id.nav_signout) {
+            mAuth.signOut();
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
@@ -113,39 +145,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
-    }
-
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        mAuth.addAuthStateListener(mAuthListener);
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        checkForCrashes();
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        unregisterManagers();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        if (mAuthListener != null) {
-            mAuth.removeAuthStateListener(mAuthListener);
-        }
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        unregisterManagers();
     }
 
     private void checkForCrashes() {
