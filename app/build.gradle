@@ -8,7 +8,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 25
         versionCode 1
-        versionName "1.0"
+        versionName "1.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         manifestPlaceholders = [HOCKEYAPP_APP_ID: "fc5607fb740e4374b4da95932decc0ba"]
     }
