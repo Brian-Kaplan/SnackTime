@@ -16,9 +16,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity">
-        </activity>
-        <activity android:name=".SignupActivity"/>
+        <activity android:name=".LoginActivity"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".SignupActivity"
+            android:windowSoftInputMode="stateHidden"/>
 
         <meta-data android:name="net.hockeyapp.android.appIdentifier" android:value="${HOCKEYAPP_APP_ID}" />
     </application>
